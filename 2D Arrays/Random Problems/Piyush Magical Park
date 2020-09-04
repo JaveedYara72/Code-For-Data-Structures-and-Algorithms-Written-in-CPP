@@ -1,0 +1,56 @@
+// Park is filled with Obstacles denoted by ".". The Strength will be reduced by 2. ie -2
+// Some Magical Denotions like "*". The Strength is Increased By +5
+// Whenever He Encounters "#". Then he is Blocked
+
+// Piyush can Only Walk from left to Right. 
+// Whenever he is Blocked, Starts to new Line without losing any strengt
+// Acquires One Minus Strength for Every Step Taken.
+
+//Help Him Get out of the Park with atleast K Strength.
+
+//Write the Inputs For the Main. Just Writing To Make it look Good
+int m,n,k,s;
+int z[1000][1000];
+cin>>m>>n>>k>>s;
+
+for(int i=0;i<=m-1;i++){
+	for(int j=0;j<=n-1;j++){
+		cin>>z[i][j];
+	}
+}
+
+void magical_park(char a[][1000] ,int m, int n,int k,int s){
+	// if it stays true then it means piyush is out of the park
+	bool success = true;
+	  // Traversing through the 2d Park
+	  for(int i=0;i<m;i++){
+	  	for(int j= 0;j<n;j++){
+	  		char ch = a[i][j];
+
+	  		if(s<k){
+	  			success = false;
+	  			break
+	  		}
+
+	  		if(ch == '*'){
+	  			s += 5;
+	  		}else if(ch == "."){
+	  			s = s-2;
+	  		}else{
+	  			break;
+	  		}
+
+	  		//We lose one point for moving right except the last column
+	  		if(j != n-1){
+	  			s--;
+	  		}
+
+	  	}
+	  }
+	  if(success){
+	  	cout<<"Yes"<<endl;
+	  	cout<<s<<endl;
+	  }else{
+	  	cout<<"No"<<endl;
+	  }
+}
