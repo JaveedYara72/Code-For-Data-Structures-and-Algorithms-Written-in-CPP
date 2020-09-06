@@ -1,0 +1,31 @@
+// Sub mmatrices problem. Find Number of total Sub Matrices in a Given Matrice of Size NxN
+// O(N^2)
+
+int sumOfSubmatrix(int **arr, int n, int m){
+	int sum = 0;
+	for(int i = 0;i<n;i++){ // Iterating over Rows	
+		for(int j=0;j<m;j++){ // Iterating  Over Columns
+			int tl = (i+1)*(j+1) // The Pink Area Would Give us the Top Left Region
+			int br = (n-i)*(m-j); // The Bottom Right Contribution that is Surrounded by Black Area
+			sum += (tl*br)*arr[i][j];
+		}
+	}
+	return sum;
+
+}
+
+int main(int argc,char const *argv[]){
+	int n,m;
+	cin>>n>>m;
+
+	int** arr = new int*[n];
+	for(int i=0;i<n;i++){
+		arr[i] = new int[m];
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			cin>>arr[i][j];
+		}
+	}
+	cout<<sumOfSubmatrix(arr,n,m)<<endl;
+}
