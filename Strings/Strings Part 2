@@ -1,0 +1,117 @@
+void readline(char a[], int maxlen, char delim = '\n') {
+	int i = 0;
+	char ch = cin.get();
+	while (ch != delim) {
+		a[i] = ch;
+		i++;
+		if (i == (maxlen - 1)) {
+			break;
+		}
+		ch = cin.get();
+	}
+
+	a[i] = '\0';
+	return;
+}
+
+// Find Out if Given String is a Palindrome Or Not
+bool isPalindrome(char a[]) {
+	int i = 0;
+	int j = strlen(a) - 1;
+
+	while (i < j) {
+		if (a[i] == a[j]) {
+			i++;
+			j--;
+		}
+		else {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+//Findout the Duplicates and remove them
+void finddup(char a[]) {
+	int l = strlen(a);
+
+	if (l == 1 or l == 0) {
+		return;
+	}
+
+	int prev = 0;
+	for (int current = 1; current < l; current++) {
+		if (a[current] != a[prev]) {
+			prev++;
+			a[prev] = a[current];
+		}
+		a[prev + 1] = '\0';
+	}
+}
+//<------------------------------------------------------------>
+//Given N Strings. Find The Largest string and what is the length?
+// Same Strategy as Kadane's Algorithm
+
+void largeststring() {
+	char a[1000];
+	char largest_len[1000];
+
+	int n;// For Max  Array Inputs
+	cin >> n;
+
+	cin.get();
+
+	int len = 0;
+	int large = 0;
+
+	for (int i = 0; i < n ; i++) {
+		cin.getline(a, 1000);
+
+		len = strlen(a);
+		if (len > large) {
+			large = len;
+			strcpy(largest_len, a);
+		}
+	}
+
+	cout << largest_len << " and " << large;
+}
+
+//<------------------------------------------------------------>
+bool compare(string a, string b) {
+	if (a.length() == b.length()) {
+		return a < b;  //if Both of them have the same length then Prints them in lexo order
+	}
+
+	return a.length() > b.length(); //prints the string with the greater length
+}
+
+
+void Sortstring() {
+	int n;
+	cin >> n;
+	cin.get();
+
+	string s[1000];
+
+	for (int i = 0; i < n; i++) {
+		getline(cin, s[i]);
+	}
+
+	sort(s, s + n); // Done Lexographically
+
+	for (int i = 0; i < n; i++) {
+		cout << s[i] << endl; // Strings are stored straight in an array.
+		//Like Not even being Split, Just attached like siblings.
+	}
+
+	cout << endl;
+
+	sort(s, s + n, compare);
+
+	for (int i = 0; i < n; i++) {
+		cout << s[i] << endl; // Strings are stored straight in an array.
+		//Like Not even being Split, Just attached like siblings.
+	}
+}
