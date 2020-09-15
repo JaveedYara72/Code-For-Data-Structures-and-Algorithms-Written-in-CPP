@@ -1,0 +1,19 @@
+/*int arr[] = {20, 30, 40, 40, 40, 50, 100, 1100};
+int n = sizeof(arr) / sizeof(int);
+
+int key;
+cin >> key;
+
+bool present = binary_search(arr, arr + n, key);
+if (present) {
+	cout << "Yes" << endl;
+} else {
+	cout << "No" << endl;
+}
+
+auto it = lower_bound(arr, arr + n, 40);
+cout << (it - arr) << endl;
+auto it1 = upper_bound(arr, arr + n, 40);
+cout << (it1 - arr) << endl;
+// To Count The Frequency
+cout << ((it1 - arr)-(it - arr)) << endl;*/
