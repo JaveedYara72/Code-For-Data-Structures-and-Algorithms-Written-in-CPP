@@ -1,0 +1,23 @@
+//<---------------------------------------------------------------->
+//2048 Problem
+//Given a String of Numbers or a Number Input, Print out the number to words
+// Extract the digit from the number and start printing spelling of numbers at the base case where we have a single number
+// Make a call for(n/10) and call for spelling for(n%10).
+
+char words[][10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+// EVery elment in this character array is a row
+
+void printspellings(int n) {
+	//base case
+	if (n == 0) {
+		return;
+	}
+
+	//recursive case of printing spellings of (204)
+	printspellings(n / 10); //remmeber, we are not updating the value of n.
+	int digit = n % 10;
+	cout << words[digit] << " ";
+	return;
+
+}
+//<------------------------------------------------------------------>
